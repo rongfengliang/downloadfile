@@ -80,9 +80,9 @@ module.exports = (uri, output, opts) => {
 			return opts.extract && archiveType(data) ? decompress(data, opts) : data;
 		}
 
-		const filename = opts.filename || filenamify(getFilename(res, data));
+		const filename = opts.filename || filenamify(getFilename(res, data),{replacement: '-'});
 		const outputFilepath = path.join(output, filename);
-
+		console.log(outputFilepath)
 		if (opts.extract && archiveType(data)) {
 			return decompress(data, path.dirname(outputFilepath), opts);
 		}
